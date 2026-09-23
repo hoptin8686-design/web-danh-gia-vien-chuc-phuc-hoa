@@ -36,9 +36,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="absolute bottom-0 left-1/3 -mb-12 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-            Chuẩn hóa danh mục công việc 2026 - 2027
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
+            Giai đoạn: Tháng 6/2026 - Tháng 9/2026 (Chuyển giao & Đầu năm học mới)
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
             Hệ Thống Thiết Kế & Quản Lý Công Việc Đánh Giá, Xếp Loại Viên Chức

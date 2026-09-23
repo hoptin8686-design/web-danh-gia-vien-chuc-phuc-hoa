@@ -45,7 +45,9 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-full border border-blue-500/20">
                   SỞ GD&ĐT CAO BẰNG
                 </span>
-                <span className="text-xs text-slate-400 font-medium">Năm học 2026 - 2027</span>
+                <span className="text-xs text-amber-300 font-semibold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
+                  Tháng 6/2026 - Tháng 9/2026
+                </span>
               </div>
               <h1 className="text-lg sm:text-xl font-extrabold bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
                 TRƯỜNG THPT PHỤC HÒA
