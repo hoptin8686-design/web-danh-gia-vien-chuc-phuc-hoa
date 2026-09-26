@@ -28,6 +28,7 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
   onOpenSelfEval,
 }) => {
   const [roleFilter, setRoleFilter] = useState<string>(initialRole);
+  const [monthFilter, setMonthFilter] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -36,6 +37,10 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
     return ALL_JOBS.filter((job) => {
       // Role filter
       if (roleFilter !== "all" && job.role.toLowerCase() !== roleFilter.toLowerCase()) {
+        return false;
+      }
+      // Month filter
+      if (monthFilter !== null && (job as any).month !== monthFilter) {
         return false;
       }
       // Search term
@@ -50,7 +55,7 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
       }
       return true;
     });
-  }, [roleFilter, searchTerm]);
+  }, [roleFilter, monthFilter, searchTerm]);
 
   const handleCopy = (id: string, text: string) => {
     navigator.clipboard.writeText(text);
@@ -144,6 +149,36 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
           </div>
         </div>
 
+        {/* Month Filter */}
+        <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold text-slate-400">Lọc theo tháng:</span>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <button
+              onClick={() => setMonthFilter(null)}
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+                monthFilter === null
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-400 hover:text-white bg-slate-900 border border-slate-800"
+              }`}
+            >
+              Tất cả tháng
+            </button>
+            {[5, 6, 7, 8, 9].map((m) => (
+              <button
+                key={m}
+                onClick={() => setMonthFilter(monthFilter === m ? null : m)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+                  monthFilter === m
+                    ? "bg-indigo-600 text-white shadow-md"
+                    : "text-slate-400 hover:text-white bg-slate-900 border border-slate-800"
+                }`}
+              >
+                Tháng {m}/2026
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Quick Download Links */}
         <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="text-slate-400 flex items-center gap-2">
@@ -191,6 +226,7 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
               onClick={() => {
                 setSearchTerm("");
                 setRoleFilter("all");
+                setMonthFilter(null);
               }}
               className="px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 text-white"
             >
@@ -219,6 +255,11 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
                   <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-md border border-cyan-500/20">
                     {job.spcvCode}
                   </span>
+                  {(job as any).month && (
+                    <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/10 px-2 py-0.5 rounded-md border border-indigo-500/20">
+                      T.{(job as any).month}/2026
+                    </span>
+                  )}
                 </div>
 
                 <div className="flex items-center gap-2 text-xs text-slate-400">

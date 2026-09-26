@@ -38,7 +38,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-            Giai đoạn: Tháng 6/2026 - Tháng 9/2026 (Chuyển giao & Đầu năm học mới)
+            Giai đoạn: Tháng 5/2026 - Tháng 9/2026 (Kết thúc năm học, Thi TN, Bồi dưỡng Hè & Đầu năm học mới)
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
             Hệ Thống Thiết Kế & Quản Lý Công Việc Đánh Giá, Xếp Loại Viên Chức
@@ -80,7 +80,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
               <Users className="w-6 h-6" />
             </div>
-            <span className="text-2xl font-black text-amber-400">25</span>
+            <span className="text-2xl font-black text-amber-400">33</span>
           </div>
           <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
             Cán Bộ Quản Lý (CBQL)
@@ -90,7 +90,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             ngân sách, CSVC và chuyển đổi số.
           </p>
           <div className="flex items-center justify-between text-xs text-amber-400 font-semibold pt-3 border-t border-slate-800">
-            <span>Xem 25 công việc chuẩn</span>
+            <span>Xem 33 công việc chuẩn</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
@@ -104,7 +104,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
               <BookOpen className="w-6 h-6" />
             </div>
-            <span className="text-2xl font-black text-emerald-400">20</span>
+            <span className="text-2xl font-black text-emerald-400">27</span>
           </div>
           <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
             Giáo Viên (GV)
@@ -114,7 +114,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             học sinh, công tác chủ nhiệm, nghiên cứu sáng kiến.
           </p>
           <div className="flex items-center justify-between text-xs text-emerald-400 font-semibold pt-3 border-t border-slate-800">
-            <span>Xem 20 công việc chuẩn</span>
+            <span>Xem 27 công việc chuẩn</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
@@ -128,7 +128,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
               <FileSpreadsheet className="w-6 h-6" />
             </div>
-            <span className="text-2xl font-black text-purple-400">22</span>
+            <span className="text-2xl font-black text-purple-400">30</span>
           </div>
           <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
             Nhân Viên (NV)
@@ -138,7 +138,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             trữ, con dấu, dịch vụ công, chăm sóc sức khỏe.
           </p>
           <div className="flex items-center justify-between text-xs text-purple-400 font-semibold pt-3 border-t border-slate-800">
-            <span>Xem 22 công việc chuẩn</span>
+            <span>Xem 30 công việc chuẩn</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>

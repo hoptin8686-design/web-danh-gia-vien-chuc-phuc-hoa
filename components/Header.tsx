@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({
                   SỞ GD&ĐT CAO BẰNG
                 </span>
                 <span className="text-xs text-amber-300 font-semibold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
-                  Tháng 6/2026 - Tháng 9/2026
+                  Tháng 5/2026 - Tháng 9/2026
                 </span>
               </div>
               <h1 className="text-lg sm:text-xl font-extrabold bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Users className="w-4 h-4 text-amber-400" />
-              CBQL (25)
+              CBQL (33)
             </button>
             <button
               onClick={() => setActiveTab("gv")}
@@ -91,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <BookOpen className="w-4 h-4 text-emerald-400" />
-              Giáo viên (20)
+              Giáo viên (27)
             </button>
             <button
               onClick={() => setActiveTab("nv")}
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <FileSpreadsheet className="w-4 h-4 text-purple-400" />
-              Nhân viên (22)
+              Nhân viên (30)
             </button>
             <button
               onClick={() => setActiveTab("downloads")}
@@ -176,7 +176,7 @@ export const Header: React.FC<HeaderProps> = ({
               activeTab === "cbql" ? "bg-blue-600 text-white" : "text-slate-300 bg-slate-900/60"
             }`}
           >
-            Công việc Cán bộ Quản lý (25)
+            Công việc Cán bộ Quản lý (33)
           </button>
           <button
             onClick={() => {
@@ -187,7 +187,7 @@ export const Header: React.FC<HeaderProps> = ({
               activeTab === "gv" ? "bg-blue-600 text-white" : "text-slate-300 bg-slate-900/60"
             }`}
           >
-            Công việc Giáo viên (20)
+            Công việc Giáo viên (27)
           </button>
           <button
             onClick={() => {
@@ -198,7 +198,7 @@ export const Header: React.FC<HeaderProps> = ({
               activeTab === "nv" ? "bg-blue-600 text-white" : "text-slate-300 bg-slate-900/60"
             }`}
           >
-            Công việc Nhân viên (22)
+            Công việc Nhân viên (30)
           </button>
           <button
             onClick={() => {
