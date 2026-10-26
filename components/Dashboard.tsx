@@ -38,7 +38,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-            Giai đoạn: Tháng 5/2026 - Tháng 9/2026 (Kết thúc năm học, Thi TN, Bồi dưỡng Hè & Đầu năm học mới)
+            Giai đoạn: Tháng 5/2026 - Tháng 10/2026 (Kết thúc năm học, Thi TN, Bồi dưỡng Hè, Khai giảng & Giữa kỳ I)
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
             Hệ Thống Thiết Kế & Quản Lý Công Việc Đánh Giá, Xếp Loại Viên Chức
@@ -104,17 +104,20 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
               <BookOpen className="w-5 h-5" />
             </div>
-            <span className="text-2xl font-black text-emerald-400">27</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/30">Mới T10 (+12)</span>
+              <span className="text-2xl font-black text-emerald-400">39</span>
+            </div>
           </div>
           <h3 className="text-base font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
             Giáo Viên (GV)
           </h3>
           <p className="text-xs text-slate-400 leading-relaxed mb-4">
-            Giáo viên bộ môn & GVCN: KHDH theo CV 5512, tích hợp AI, bồi dưỡng HSG, phụ đạo
+            Giáo viên bộ môn & GVCN: KHDH theo CV 5512, tích hợp AI, ra đề & chấm thi giữa HK1, bồi dưỡng HSG, phụ đạo
             học sinh, công tác chủ nhiệm, nghiên cứu sáng kiến.
           </p>
           <div className="flex items-center justify-between text-xs text-emerald-400 font-semibold pt-3 border-t border-slate-800">
-            <span>27 công việc chuẩn</span>
+            <span>39 công việc chuẩn (T5-T10)</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
