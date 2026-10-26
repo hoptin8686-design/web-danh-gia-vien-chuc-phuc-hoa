@@ -1,7 +1,7 @@
 // Danh mục công việc chính thức CBQL - GV - NV thực hiện giai đoạn Tháng 5/2026 đến Tháng 10/2026
 export interface JobItem {
   id: string;
-  role: 'CBQL' | 'GV' | 'NV';
+  role: 'CBQL' | 'GV' | 'NV' | 'TTCM';
   roleName: string;
   month: number;
   tt: number;
@@ -20,6 +20,7 @@ export const JOBS_DATA: {
   cbql: JobItem[];
   gv: JobItem[];
   nv: JobItem[];
+  ttcm: JobItem[];
 } = {
   "cbql": [
     // --- THÁNG 5/2026 ---
@@ -1979,11 +1980,238 @@ export const JOBS_DATA: {
       "targetProgress": 100,
       "notes": "Báo cáo quyết toán ngân sách quý III/2026 đã đối chiếu Kho bạc"
     }
+  ],
+  "ttcm": [
+    {
+        "id": "TTCM_M10_1",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Xây dựng Kế hoạch hoạt động chuyên môn tổ tháng 10/2026; theo dõi, đôn đốc tiến độ thực hiện chương trình giảng dạy tuần 5 đến tuần 9 của 100% giáo viên trong tổ",
+        "spcvFull": "N2_1115 - Kế hoạch triển khai hoạt động chuyên môn",
+        "spcvCode": "N2_1115",
+        "spcvName": "Kế hoạch triển khai hoạt động chuyên môn",
+        "deadline": "05/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Kế hoạch chuyên môn tháng 10/2026 của tổ chuyên môn đã được Ban Giám hiệu phê duyệt"
+    },
+    {
+        "id": "TTCM_M10_2",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Chỉ đạo xây dựng, tổ chức thẩm định và phê duyệt Ma trận, Bản đặc tả đề kiểm tra định kỳ giữa học kỳ I năm học 2026 - 2027 cho các môn học thuộc tổ",
+        "spcvFull": "N2_1042 - Tham mưu công tác kiểm tra các kỳ thi, kiểm tra chuyên môn",
+        "spcvCode": "N2_1042",
+        "spcvName": "Tham mưu công tác kiểm tra các kỳ thi, kiểm tra chuyên môn",
+        "deadline": "10/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Bản ma trận và đặc tả đề kiểm tra giữa HK1 các khối 10, 11, 12 có chữ ký duyệt của TTCM"
+    },
+    {
+        "id": "TTCM_M10_3",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 2,
+        "name": "Phân công giáo viên ra đề thi, đáp án, biểu điểm và tổ chức thẩm định, phản biện đề kiểm tra giữa học kỳ I bảo đảm chuẩn đầu ra, tính phân hóa và bảo mật tuyệt đối",
+        "spcvFull": "N2_1042 - Tham mưu công tác kiểm tra các kỳ thi, kiểm tra chuyên môn",
+        "spcvCode": "N2_1042",
+        "spcvName": "Tham mưu công tác kiểm tra các kỳ thi, kiểm tra chuyên môn",
+        "deadline": "15/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Biên bản thẩm định đề thi và túi đề kiểm tra giữa học kỳ I bàn giao Ban Giám hiệu"
+    },
+    {
+        "id": "TTCM_M10_4",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Chủ trì sinh hoạt tổ chuyên môn lần 1 tháng 10 theo Nghiên cứu bài học: Thảo luận xây dựng bài học minh họa và ứng dụng công cụ AI trong đổi mới phương pháp dạy học",
+        "spcvFull": "N2_1116 - Báo cáo chuyên đề chuyên môn",
+        "spcvCode": "N2_1116",
+        "spcvName": "Báo cáo chuyên đề chuyên môn",
+        "deadline": "08/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Biên bản sinh hoạt tổ lần 1 tháng 10 và Kế hoạch bài dạy minh họa nghiên cứu bài học"
+    },
+    {
+        "id": "TTCM_M10_5",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 2,
+        "name": "Tổ chức thực hiện tiết dạy thực nghiệm nghiên cứu bài học, chủ trì thảo luận phân tích hoạt động học của học sinh và rút kinh nghiệm chuyên đề tổ chuyên môn",
+        "spcvFull": "N2_1116 - Báo cáo chuyên đề chuyên môn",
+        "spcvCode": "N2_1116",
+        "spcvName": "Báo cáo chuyên đề chuyên môn",
+        "deadline": "22/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Báo cáo chuyên đề nghiên cứu bài học và biên bản góp ý tiết dạy thực nghiệm của tổ"
+    },
+    {
+        "id": "TTCM_M10_6",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Kiểm tra định kỳ hồ sơ chuyên môn, kế hoạch bài dạy (giáo án), lịch báo giảng và sổ ghi đầu bài của 100% giáo viên trong tổ tháng 10/2026",
+        "spcvFull": "N1_611 - Tổ chức, điều hành, đánh giá kết quả thực hiện nhiệm vụ của công chức thuộc phòng",
+        "spcvCode": "N1_611",
+        "spcvName": "Tổ chức, điều hành, đánh giá kết quả thực hiện nhiệm vụ của công chức thuộc phòng",
+        "deadline": "20/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Sổ kiểm tra hồ sơ chuyên môn tổ và phiếu nhận xét đánh giá từng giáo viên tháng 10"
+    },
+    {
+        "id": "TTCM_M10_7",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 2,
+        "name": "Thực hiện dự giờ đánh giá tiết dạy của giáo viên trong tổ theo kế hoạch (2-3 tiết/tháng), tư vấn phương pháp giảng dạy, sử dụng thiết bị dạy học và kỹ năng sư phạm",
+        "spcvFull": "N1_611 - Tổ chức, điều hành, đánh giá kết quả thực hiện nhiệm vụ của công chức thuộc phòng",
+        "spcvCode": "N1_611",
+        "spcvName": "Tổ chức, điều hành, đánh giá kết quả thực hiện nhiệm vụ của công chức thuộc phòng",
+        "deadline": "25/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Phiếu đánh giá dự giờ giáo viên và sổ theo dõi dự giờ của Tổ trưởng chuyên môn"
+    },
+    {
+        "id": "TTCM_M10_8",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 3,
+        "name": "Kiểm tra, đôn đốc giáo viên trong tổ khai thác hiệu quả thiết bị dạy học tối thiểu, phòng thực hành máy vi tính/thí nghiệm và ghi chép sổ theo dõi sử dụng thiết bị tháng 10",
+        "spcvFull": "N1_611 - Tổ chức, điều hành, đánh giá kết quả thực hiện nhiệm vụ của công chức thuộc phòng",
+        "spcvCode": "N1_611",
+        "spcvName": "Tổ chức, điều hành, đánh giá kết quả thực hiện nhiệm vụ của công chức thuộc phòng",
+        "deadline": "24/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Bảng tổng hợp số tiết dạy thực hành, sử dụng phòng bộ môn tháng 10 của tổ chuyên môn"
+    },
+    {
+        "id": "TTCM_M10_9",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Chỉ đạo và kiểm tra công tác bồi dưỡng đội tuyển học sinh giỏi môn học thuộc tổ; thẩm định chuyên đề nâng cao chuẩn bị kỳ thi chọn HSG cấp tỉnh năm học 2026 - 2027",
+        "spcvFull": "N2_1108 - Tổ chức kỳ thi chọn Đội tuyển tham dự kỳ thi chọn học sinh giỏi quốc gia THPT năm học 2026 - 2027 (tổ chức ra đề, coi thi, chấm ",
+        "spcvCode": "N2_1108",
+        "spcvName": "Tổ chức kỳ thi chọn Đội tuyển tham dự kỳ thi chọn học sinh giỏi quốc gia THPT",
+        "deadline": "18/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Kế hoạch bồi dưỡng HSG và báo cáo tiến độ ôn luyện các đội tuyển của tổ chuyên môn"
+    },
+    {
+        "id": "TTCM_M10_10",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 2,
+        "name": "Chỉ đạo giáo viên bộ môn rà soát kết quả kiểm tra thường xuyên, lập danh sách học sinh có nguy cơ chưa đạt chuẩn và phân công dạy phụ đạo, kèm cặp kịp thời",
+        "spcvFull": "N2_1115 - Kế hoạch triển khai hoạt động chuyên môn",
+        "spcvCode": "N2_1115",
+        "spcvName": "Kế hoạch triển khai hoạt động chuyên môn",
+        "deadline": "16/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Danh sách học sinh cần phụ đạo và kế hoạch bồi dưỡng kiến thức yếu kém của tổ"
+    },
+    {
+        "id": "TTCM_M10_11",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Đôn đốc, giám sát giáo viên chấm bài kiểm tra giữa học kỳ I đúng quy chế; kiểm tra việc nhập điểm lên hệ thống VnEdu và tổng hợp báo cáo phân tích phổ điểm của tổ",
+        "spcvFull": "N1_564 - Quản lý dữ liệu của các Kỳ thi",
+        "spcvCode": "N1_564",
+        "spcvName": "Quản lý dữ liệu của các Kỳ thi",
+        "deadline": "28/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Báo cáo tổng hợp kết quả và phân tích phổ điểm bài kiểm tra giữa kỳ I nộp Ban Giám hiệu"
+    },
+    {
+        "id": "TTCM_M10_12",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Thực hiện nghiêm túc định mức giảng dạy 14 tiết/tuần của Tổ trưởng chuyên môn; soạn giáo án đầy đủ chuẩn CV 5512, tích hợp AI và kiểm tra đánh giá học sinh đúng quy định",
+        "spcvFull": "N1_550 - Soạn thảo văn bản hành chính",
+        "spcvCode": "N1_550",
+        "spcvName": "Soạn thảo văn bản hành chính",
+        "deadline": "30/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Kế hoạch bài dạy (giáo án) 14 tiết/tuần các lớp phụ trách và sổ điểm trên hệ thống VnEdu"
+    },
+    {
+        "id": "TTCM_M10_13",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Phát động phong trào thi đua 'Dạy tốt - Học tốt' chào mừng 44 năm ngày Nhà giáo Việt Nam 20/11 trong tổ; lập danh sách giáo viên đăng ký tiết dạy thao giảng, hội đồng cấp trường",
+        "spcvFull": "N2_1123 - Báo cáo kết quả thực hiện phong trào thi đua \"Đổi mới, sáng tạo trong quản lý, giảng dạy và học tập\"; chấm điểm các tiêu chí thi",
+        "spcvCode": "N2_1123",
+        "spcvName": "Báo cáo kết quả thực hiện phong trào thi đua Đổi mới, sáng tạo",
+        "deadline": "26/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Danh sách giáo viên đăng ký thao giảng chào mừng 20/11 và lịch hội giảng của tổ chuyên môn"
+    },
+    {
+        "id": "TTCM_M10_14",
+        "role": "TTCM",
+        "roleName": "Tổ trưởng Chuyên môn",
+        "month": 10,
+        "tt": 1,
+        "name": "Tham gia họp giao ban BGH với các Tổ trưởng chuyên môn; hoàn thành báo cáo đánh giá công tác tháng 10/2026 và đề xuất phương hướng nhiệm vụ trọng tâm tháng 11/2026 của tổ",
+        "spcvFull": "N1_610 - Chủ trì xây dựng kế hoạch, chương trình công tác của Phòng",
+        "spcvCode": "N1_610",
+        "spcvName": "Chủ trì xây dựng kế hoạch, chương trình công tác của Phòng",
+        "deadline": "31/10/2026",
+        "targetQuantity": 100,
+        "targetQuality": 100,
+        "targetProgress": 100,
+        "notes": "Biên bản họp giao ban BGH và Báo cáo tổng kết công tác chuyên môn tháng 10/2026 của tổ"
+      }
   ]
 };
 
 export const ALL_JOBS: JobItem[] = [
   ...JOBS_DATA.cbql,
   ...JOBS_DATA.gv,
-  ...JOBS_DATA.nv
+  ...JOBS_DATA.nv,
+  ...JOBS_DATA.ttcm
 ];

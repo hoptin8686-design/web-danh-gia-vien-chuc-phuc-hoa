@@ -39,7 +39,7 @@ export default function HomePage() {
           />
         )}
 
-        {(activeTab === "cbql" || activeTab === "gv" || activeTab === "nv") && (
+        {(activeTab === "cbql" || activeTab === "gv" || activeTab === "nv" || activeTab === "ttcm") && (
           <JobExplorer
             key={activeTab}
             initialRole={activeTab}

@@ -69,20 +69,20 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </div>
       </div>
 
-      {/* 3 Role Categories Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* 4 Role Categories Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* CBQL */}
         <div
           onClick={() => onSelectRole("cbql")}
-          className="group relative cursor-pointer glass-card rounded-2xl p-6 border border-slate-800 hover:border-amber-500/40 transition-all"
+          className="group relative cursor-pointer glass-card rounded-2xl p-5 border border-slate-800 hover:border-amber-500/40 transition-all"
         >
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
-              <Users className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+              <Users className="w-5 h-5" />
             </div>
             <span className="text-2xl font-black text-amber-400">33</span>
           </div>
-          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+          <h3 className="text-base font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
             Cán Bộ Quản Lý (CBQL)
           </h3>
           <p className="text-xs text-slate-400 leading-relaxed mb-4">
@@ -90,7 +90,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             ngân sách, CSVC và chuyển đổi số.
           </p>
           <div className="flex items-center justify-between text-xs text-amber-400 font-semibold pt-3 border-t border-slate-800">
-            <span>Xem 33 công việc chuẩn</span>
+            <span>33 công việc chuẩn</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
@@ -98,23 +98,49 @@ export const Dashboard: React.FC<DashboardProps> = ({
         {/* GV */}
         <div
           onClick={() => onSelectRole("gv")}
-          className="group relative cursor-pointer glass-card rounded-2xl p-6 border border-slate-800 hover:border-emerald-500/40 transition-all"
+          className="group relative cursor-pointer glass-card rounded-2xl p-5 border border-slate-800 hover:border-emerald-500/40 transition-all"
         >
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
-              <BookOpen className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+              <BookOpen className="w-5 h-5" />
             </div>
             <span className="text-2xl font-black text-emerald-400">27</span>
           </div>
-          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+          <h3 className="text-base font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
             Giáo Viên (GV)
           </h3>
           <p className="text-xs text-slate-400 leading-relaxed mb-4">
-            Giáo viên bộ môn, GVCN & Tổ trưởng CM: KHDH theo CV 5512, tích hợp AI, bồi dưỡng HSG, phụ đạo
+            Giáo viên bộ môn & GVCN: KHDH theo CV 5512, tích hợp AI, bồi dưỡng HSG, phụ đạo
             học sinh, công tác chủ nhiệm, nghiên cứu sáng kiến.
           </p>
           <div className="flex items-center justify-between text-xs text-emerald-400 font-semibold pt-3 border-t border-slate-800">
-            <span>Xem 27 công việc chuẩn</span>
+            <span>27 công việc chuẩn</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+
+        {/* TTCM - MỚI */}
+        <div
+          onClick={() => onSelectRole("ttcm")}
+          className="group relative cursor-pointer glass-card rounded-2xl p-5 border border-cyan-500/30 hover:border-cyan-400/60 bg-gradient-to-b from-cyan-950/20 to-transparent transition-all shadow-lg shadow-cyan-950/30"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+              <Award className="w-5 h-5" />
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-300 bg-cyan-500/20 px-2 py-0.5 rounded-full border border-cyan-500/30">Mới T10</span>
+              <span className="text-2xl font-black text-cyan-400">14</span>
+            </div>
+          </div>
+          <h3 className="text-base font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors flex items-center gap-1.5">
+            Tổ Trưởng Chuyên Môn
+          </h3>
+          <p className="text-xs text-slate-400 leading-relaxed mb-4">
+            Quản lý tổ chuyên môn, duyệt Ma trận đặc tả & Đề thi giữa HK1, sinh hoạt NCBL ứng dụng AI, kiểm tra giáo án, bồi dưỡng HSG, dạy 14 tiết/tuần.
+          </p>
+          <div className="flex items-center justify-between text-xs text-cyan-400 font-semibold pt-3 border-t border-slate-800">
+            <span>14 công việc Tháng 10</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
@@ -122,23 +148,23 @@ export const Dashboard: React.FC<DashboardProps> = ({
         {/* NV */}
         <div
           onClick={() => onSelectRole("nv")}
-          className="group relative cursor-pointer glass-card rounded-2xl p-6 border border-slate-800 hover:border-purple-500/40 transition-all"
+          className="group relative cursor-pointer glass-card rounded-2xl p-5 border border-slate-800 hover:border-purple-500/40 transition-all"
         >
           <div className="flex items-center justify-between mb-4">
-            <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
-              <FileSpreadsheet className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+              <FileSpreadsheet className="w-5 h-5" />
             </div>
             <span className="text-2xl font-black text-purple-400">30</span>
           </div>
-          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+          <h3 className="text-base font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
             Nhân Viên (NV)
           </h3>
           <p className="text-xs text-slate-400 leading-relaxed mb-4">
-            Kế toán, Văn thư, Thủ quỹ, Thiết bị - Thí nghiệm, Thư viện, Y tế, CNTT: Nghiệp vụ tài chính, lưu
+            Kế toán, Văn thư, Thủ quỹ, Thiết bị - TN, Thư viện, Y tế, CNTT: Nghiệp vụ tài chính, lưu
             trữ, con dấu, dịch vụ công, chăm sóc sức khỏe.
           </p>
           <div className="flex items-center justify-between text-xs text-purple-400 font-semibold pt-3 border-t border-slate-800">
-            <span>Xem 30 công việc chuẩn</span>
+            <span>30 công việc chuẩn</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </div>
         </div>

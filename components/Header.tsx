@@ -94,6 +94,18 @@ export const Header: React.FC<HeaderProps> = ({
               Giáo viên (27)
             </button>
             <button
+              onClick={() => setActiveTab("ttcm")}
+              className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+                activeTab === "ttcm"
+                  ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
+                  : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+              }`}
+            >
+              <Award className="w-4 h-4 text-cyan-400" />
+              Tổ trưởng CM (14)
+              <span className="text-[10px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.2 rounded-full font-bold">T10</span>
+            </button>
+            <button
               onClick={() => setActiveTab("nv")}
               className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
                 activeTab === "nv"
@@ -188,6 +200,18 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             Công việc Giáo viên (27)
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab("ttcm");
+              setMobileMenuOpen(false);
+            }}
+            className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium flex items-center justify-between ${
+              activeTab === "ttcm" ? "bg-blue-600 text-white" : "text-slate-300 bg-slate-900/60"
+            }`}
+          >
+            <span>Công việc Tổ trưởng Chuyên môn (14)</span>
+            <span className="text-[10px] bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-full font-bold">Tháng 10</span>
           </button>
           <button
             onClick={() => {

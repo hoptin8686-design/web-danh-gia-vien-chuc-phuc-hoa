@@ -12,6 +12,7 @@ import {
   BookOpen,
   Layers,
   ArrowDownCircle,
+  Award,
 } from "lucide-react";
 
 export const DownloadCenter: React.FC = () => {
@@ -41,10 +42,20 @@ export const DownloadCenter: React.FC = () => {
       filename: "Import_cong_viec_GV.xlsx",
       path: "/downloads/Import_cong_viec_GV.xlsx",
       count: "27 công việc",
-      desc: "Dành cho Giáo viên bộ môn, Giáo viên chủ nhiệm và Tổ trưởng chuyên môn.",
+      desc: "Dành cho Giáo viên bộ môn, Giáo viên chủ nhiệm thực hiện giảng dạy, chấm thi, bồi dưỡng hè.",
       badge: "Giáo viên",
       color: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
       icon: BookOpen,
+    },
+    {
+      title: "File Dành Riêng Cho Tổ Trưởng Chuyên Môn (TTCM) - Tháng 10",
+      filename: "Import_cong_viec_TTCM_Thang_10.xlsx",
+      path: "/downloads/Import_cong_viec_TTCM_Thang_10.xlsx",
+      count: "14 công việc",
+      desc: "Dành cho Tổ trưởng chuyên môn: Kế hoạch tổ, Ma trận đề thi giữa HK1, Sinh hoạt NCBL AI, Kiểm tra hồ sơ giáo án, Bồi dưỡng HSG, Dạy 14 tiết/tuần.",
+      badge: "Mới Tháng 10",
+      color: "border-cyan-500/30 bg-cyan-500/10 text-cyan-400",
+      icon: Award,
     },
     {
       title: "File Dành Riêng Cho Nhân Viên (NV)",

@@ -24,9 +24,9 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [role, setRole] = useState<"cbql" | "gv" | "nv">("gv");
+  const [role, setRole] = useState<"cbql" | "gv" | "nv" | "ttcm">("ttcm");
   const [fullName, setFullName] = useState("");
-  const [position, setPosition] = useState("Giáo viên");
+  const [position, setPosition] = useState("Tổ trưởng Chuyên môn");
   const [hasInitiative, setHasInitiative] = useState(true);
   const [deductions, setDeductions] = useState<number>(0);
   const [calculated, setCalculated] = useState(false);
@@ -125,10 +125,12 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
               <select
                 value={role}
                 onChange={(e) => {
-                  setRole(e.target.value as "cbql" | "gv" | "nv");
+                  setRole(e.target.value as "cbql" | "gv" | "nv" | "ttcm");
                   setPosition(
                     e.target.value === "cbql"
                       ? "Phó Hiệu trưởng"
+                      : e.target.value === "ttcm"
+                      ? "Tổ trưởng Chuyên môn"
                       : e.target.value === "gv"
                       ? "Giáo viên"
                       : "Nhân viên Kế toán"
@@ -137,6 +139,7 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
                 className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-blue-500"
               >
                 <option value="cbql">Cán bộ Quản lý (CBQL)</option>
+                <option value="ttcm">Tổ trưởng Chuyên môn (TTCM - Tháng 10)</option>
                 <option value="gv">Giáo viên (GV)</option>
                 <option value="nv">Nhân viên (NV)</option>
               </select>

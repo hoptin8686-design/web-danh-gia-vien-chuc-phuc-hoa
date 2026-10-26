@@ -15,6 +15,7 @@ import {
   Users,
   BookOpen,
   FileSpreadsheet,
+  Award,
 } from "lucide-react";
 import { JobItem, ALL_JOBS, JOBS_DATA } from "@/lib/jobs_data";
 
@@ -116,6 +117,17 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
               Giáo Viên ({JOBS_DATA.gv.length})
             </button>
             <button
+              onClick={() => setRoleFilter("ttcm")}
+              className={`px-3.5 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                roleFilter === "ttcm"
+                  ? "bg-cyan-600 text-white shadow-md shadow-cyan-600/30"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Award className="w-3.5 h-3.5 text-cyan-400" />
+              Tổ Trưởng CM ({JOBS_DATA.ttcm?.length || 14})
+            </button>
+            <button
               onClick={() => setRoleFilter("nv")}
               className={`px-3.5 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 ${
                 roleFilter === "nv"
@@ -163,17 +175,18 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
             >
               Tất cả tháng
             </button>
-            {[5, 6, 7, 8, 9].map((m) => (
+            {[5, 6, 7, 8, 9, 10].map((m) => (
               <button
                 key={m}
                 onClick={() => setMonthFilter(monthFilter === m ? null : m)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${
                   monthFilter === m
                     ? "bg-indigo-600 text-white shadow-md"
                     : "text-slate-400 hover:text-white bg-slate-900 border border-slate-800"
                 }`}
               >
                 Tháng {m}/2026
+                {m === 10 && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>}
               </button>
             ))}
           </div>
@@ -192,6 +205,8 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
                   ? "CBQL"
                   : roleFilter === "gv"
                   ? "GV"
+                  : roleFilter === "ttcm"
+                  ? "TTCM_Thang_10"
                   : roleFilter === "nv"
                   ? "NV"
                   : "Tong_hop_tat_ca"
