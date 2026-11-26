@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Đánh Giá, Xếp Loại Viên Chức & Người Lao Động | THPT Phục Hòa",
+  title: "Đánh Giá, Xếp Loại Viên Chức Tháng 11/2026 | THPT Phục Hòa",
   description:
-    "Hệ thống quản lý, thiết kế nội dung công việc chính của CBQL, GV, NV phục vụ đánh giá, xếp loại viên chức, người lao động theo chuẩn Nghị định 90/2020 & 48/2023 - Trường THPT Phục Hòa, Cao Bằng",
+    "Hệ thống quản lý, thiết kế nội dung công việc chính Tháng 11/2026 (giai đoạn T5 - T11/2026) của CBQL, GV, TTCM, NV phục vụ đánh giá, xếp loại viên chức, người lao động theo Nghị định 90/2020 & 48/2023 - Trường THPT Phục Hòa, Cao Bằng",
   keywords: [
-    "Đánh giá viên chức",
+    "Đánh giá viên chức tháng 11 2026",
     "Xếp loại người lao động",
-    "CBQL GV NV",
+    "CBQL GV TTCM NV",
     "Import công việc",
     "THPT Phục Hòa",
     "Cao Bằng",

@@ -11,12 +11,19 @@ import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>("overview");
+  const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
   const [isSelfEvalOpen, setIsSelfEvalOpen] = useState(false);
   const [isRegulationsOpen, setIsRegulationsOpen] = useState(false);
 
-  const handleSelectRole = (role: string) => {
+  const handleSelectRole = (role: string, month: number | null = null) => {
+    setSelectedMonth(month);
     setActiveTab(role);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleTabChange = (tab: string) => {
+    setSelectedMonth(null);
+    setActiveTab(tab);
   };
 
   return (
@@ -24,7 +31,8 @@ export default function HomePage() {
       {/* Header */}
       <Header
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChange}
+        onSelectMonth11={() => handleSelectRole("all", 11)}
         onOpenSelfEval={() => setIsSelfEvalOpen(true)}
         onOpenRegulations={() => setIsRegulationsOpen(true)}
       />
@@ -35,14 +43,15 @@ export default function HomePage() {
           <Dashboard
             onSelectRole={handleSelectRole}
             onOpenSelfEval={() => setIsSelfEvalOpen(true)}
-            onOpenDownloads={() => setActiveTab("downloads")}
+            onOpenDownloads={() => handleTabChange("downloads")}
           />
         )}
 
-        {(activeTab === "cbql" || activeTab === "gv" || activeTab === "nv" || activeTab === "ttcm") && (
+        {(activeTab === "all" || activeTab === "cbql" || activeTab === "gv" || activeTab === "nv" || activeTab === "ttcm") && (
           <JobExplorer
-            key={activeTab}
+            key={`${activeTab}-${selectedMonth ?? "all"}`}
             initialRole={activeTab}
+            initialMonth={selectedMonth}
             onOpenSelfEval={() => setIsSelfEvalOpen(true)}
           />
         )}

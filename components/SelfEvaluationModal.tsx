@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  X,
-  Award,
-  Sparkles,
-  CheckCircle2,
-  AlertCircle,
-  Download,
-  Printer,
-  ChevronRight,
-  TrendingUp,
-} from "lucide-react";
+import { X, Award, Sparkles, Download } from "lucide-react";
 import confetti from "canvas-confetti";
 import { JobItem, JOBS_DATA } from "@/lib/jobs_data";
 
@@ -25,6 +15,7 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
   onClose,
 }) => {
   const [role, setRole] = useState<"cbql" | "gv" | "nv" | "ttcm">("ttcm");
+  const [evalMonth, setEvalMonth] = useState<"11" | "10" | "all">("11");
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("Tổ trưởng Chuyên môn");
   const [hasInitiative, setHasInitiative] = useState(true);
@@ -33,9 +24,29 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
 
   if (!isOpen) return null;
 
-  const currentJobs: JobItem[] = JOBS_DATA[role];
+  const allRoleJobs: JobItem[] = JOBS_DATA[role];
+  const currentJobs: JobItem[] =
+    evalMonth === "all"
+      ? allRoleJobs
+      : allRoleJobs.filter((j) => j.month === Number(evalMonth));
 
-  // Calculate rating
+  const getExcelHref = () => {
+    if (evalMonth === "11") {
+      if (role === "cbql") return "/downloads/Import_cong_viec_CBQL_Thang_11.xlsx";
+      if (role === "gv") return "/downloads/Import_cong_viec_GV_Thang_11.xlsx";
+      if (role === "ttcm") return "/downloads/Import_cong_viec_TTCM_Thang_11.xlsx";
+      return "/downloads/Import_cong_viec_NV_Thang_11.xlsx";
+    }
+    if (evalMonth === "10") {
+      if (role === "gv") return "/downloads/Import_cong_viec_GV_Thang_10.xlsx";
+      if (role === "ttcm") return "/downloads/Import_cong_viec_TTCM_Thang_10.xlsx";
+    }
+    if (role === "cbql") return "/downloads/Import_cong_viec_CBQL.xlsx";
+    if (role === "gv") return "/downloads/Import_cong_viec_GV.xlsx";
+    if (role === "ttcm") return "/downloads/Import_cong_viec_TTCM.xlsx";
+    return "/downloads/Import_cong_viec_NV.xlsx";
+  };
+
   const handleCalculate = () => {
     setCalculated(true);
     confetti({
@@ -51,7 +62,7 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
       return {
         level: "Hoàn Thành Xuất Sắc Nhiệm Vụ",
         color: "text-amber-400 bg-amber-500/10 border-amber-500/30",
-        desc: "Đạt đủ điều kiện: 100% nhiệm vụ hoàn thành xuất sắc + có sáng kiến kinh nghiệm được nghiệm thu + không bị trừ điểm thi đua.",
+        desc: "Đạt đủ điều kiện: 100% nhiệm vụ hoàn thành xuất sắc + có sáng kiến/giải pháp đổi mới được ghi nhận + không bị trừ điểm thi đua.",
       };
     }
     if (finalScore >= 80 && deductions < 15) {
@@ -98,20 +109,35 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
             Phiếu Tự Đánh Giá & Dự Kiến Xếp Loại Viên Chức
           </h3>
           <p className="text-xs text-slate-400 mt-1">
-            Theo Nghị định 90/2020/NĐ-CP & Quy chế thi đua Trường THPT Phục Hòa
+            Theo Nghị định 90/2020/NĐ-CP, Nghị định 48/2023/NĐ-CP & Quy chế THPT Phục Hòa
           </p>
         </div>
 
         {/* Form Inputs */}
         <div className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                Kỳ đánh giá:
+              </label>
+              <select
+                value={evalMonth}
+                onChange={(e) => setEvalMonth(e.target.value as "11" | "10" | "all")}
+                className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-cyan-500/40 text-sm text-cyan-300 font-semibold focus:outline-none focus:border-blue-500"
+              >
+                <option value="11">Tháng 11/2026 (Mới)</option>
+                <option value="10">Tháng 10/2026</option>
+                <option value="all">Giai đoạn T5 - T11/2026</option>
+              </select>
+            </div>
+
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
                 Họ và tên viên chức:
               </label>
               <input
                 type="text"
-                placeholder="Ví dụ: Nông Văn Hợp"
+                placeholder="Ví dụ: Đàm Thị Hợp"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-blue-500"
@@ -120,26 +146,27 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
 
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Nhóm đối tượng đánh giá:
+                Nhóm đối tượng:
               </label>
               <select
                 value={role}
                 onChange={(e) => {
-                  setRole(e.target.value as "cbql" | "gv" | "nv" | "ttcm");
+                  const nextRole = e.target.value as "cbql" | "gv" | "nv" | "ttcm";
+                  setRole(nextRole);
                   setPosition(
-                    e.target.value === "cbql"
-                      ? "Phó Hiệu trưởng"
-                      : e.target.value === "ttcm"
+                    nextRole === "cbql"
+                      ? "Hiệu trưởng / Phó Hiệu trưởng"
+                      : nextRole === "ttcm"
                       ? "Tổ trưởng Chuyên môn"
-                      : e.target.value === "gv"
+                      : nextRole === "gv"
                       ? "Giáo viên"
-                      : "Nhân viên Kế toán"
+                      : "Nhân viên"
                   );
                 }}
                 className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-blue-500"
               >
                 <option value="cbql">Cán bộ Quản lý (CBQL)</option>
-                <option value="ttcm">Tổ trưởng Chuyên môn (TTCM - Tháng 10)</option>
+                <option value="ttcm">Tổ trưởng Chuyên môn (TTCM)</option>
                 <option value="gv">Giáo viên (GV)</option>
                 <option value="nv">Nhân viên (NV)</option>
               </select>
@@ -178,7 +205,7 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
           <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
             <div>
               <span className="text-xs font-bold text-white block">
-                Có sáng kiến kinh nghiệm / Đề tài NCKH được công nhận:
+                Có sáng kiến kinh nghiệm / Đề tài NCKH / Giải pháp đổi mới:
               </span>
               <span className="text-[11px] text-slate-400">
                 (Điều kiện bắt buộc đối với mức Hoàn thành xuất sắc nhiệm vụ)
@@ -206,21 +233,22 @@ export const SelfEvaluationModal: React.FC<SelfEvaluationModalProps> = ({
         {calculated && (
           <div className={`p-5 rounded-2xl border ${ranking.color} space-y-3 animate-fade-in`}>
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-400">Kết quả dự kiến:</span>
+              <span className="text-xs font-semibold text-slate-400">
+                {fullName ? `${fullName} (${position})` : "Kết quả dự kiến"} —{" "}
+                {evalMonth === "all" ? "T5-T11/2026" : `Tháng ${evalMonth}/2026`}:
+              </span>
               <span className="text-sm font-bold">
                 Điểm thi đua: {Math.max(0, 100 - deductions)} / 100
               </span>
             </div>
             <h4 className="text-lg font-black">{ranking.level}</h4>
             <p className="text-xs text-slate-300 leading-relaxed">{ranking.desc}</p>
-            <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs gap-2 flex-wrap">
               <span className="text-slate-400">
                 Đã hoàn thành {currentJobs.length}/{currentJobs.length} công việc theo danh mục
               </span>
               <a
-                href={`/downloads/Import_cong_viec_${
-                  role === "cbql" ? "CBQL" : role === "gv" ? "GV" : "NV"
-                }.xlsx`}
+                href={getExcelHref()}
                 download
                 className="font-bold underline text-cyan-400 flex items-center gap-1"
               >

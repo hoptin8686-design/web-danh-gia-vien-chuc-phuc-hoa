@@ -3,13 +3,10 @@
 import React, { useState, useMemo } from "react";
 import {
   Search,
-  Filter,
   Copy,
   Check,
   Calendar,
   Layers,
-  FileCheck,
-  ChevronDown,
   Sparkles,
   Download,
   Users,
@@ -17,34 +14,33 @@ import {
   FileSpreadsheet,
   Award,
 } from "lucide-react";
-import { JobItem, ALL_JOBS, JOBS_DATA } from "@/lib/jobs_data";
+import { ALL_JOBS, JOBS_DATA } from "@/lib/jobs_data";
 
 interface JobExplorerProps {
   initialRole?: string;
+  initialMonth?: number | null;
   onOpenSelfEval: () => void;
 }
 
 export const JobExplorer: React.FC<JobExplorerProps> = ({
   initialRole = "all",
+  initialMonth = null,
   onOpenSelfEval,
 }) => {
   const [roleFilter, setRoleFilter] = useState<string>(initialRole);
-  const [monthFilter, setMonthFilter] = useState<number | null>(null);
+  const [monthFilter, setMonthFilter] = useState<number | null>(initialMonth);
   const [searchTerm, setSearchTerm] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
   // Filter jobs
   const filteredJobs = useMemo(() => {
     return ALL_JOBS.filter((job) => {
-      // Role filter
       if (roleFilter !== "all" && job.role.toLowerCase() !== roleFilter.toLowerCase()) {
         return false;
       }
-      // Month filter
-      if (monthFilter !== null && (job as any).month !== monthFilter) {
+      if (monthFilter !== null && job.month !== monthFilter) {
         return false;
       }
-      // Search term
       if (searchTerm.trim()) {
         const query = searchTerm.toLowerCase();
         return (
@@ -70,11 +66,32 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
         return "bg-amber-500/10 text-amber-400 border-amber-500/20";
       case "GV":
         return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+      case "TTCM":
+        return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
       case "NV":
         return "bg-purple-500/10 text-purple-400 border-purple-500/20";
       default:
         return "bg-blue-500/10 text-blue-400 border-blue-500/20";
     }
+  };
+
+  const getDownloadHref = () => {
+    if (monthFilter === 11) {
+      if (roleFilter === "cbql") return "/downloads/Import_cong_viec_CBQL_Thang_11.xlsx";
+      if (roleFilter === "gv") return "/downloads/Import_cong_viec_GV_Thang_11.xlsx";
+      if (roleFilter === "ttcm") return "/downloads/Import_cong_viec_TTCM_Thang_11.xlsx";
+      if (roleFilter === "nv") return "/downloads/Import_cong_viec_NV_Thang_11.xlsx";
+      return "/downloads/Import_cong_viec_Thang_11_Tong_hop.xlsx";
+    }
+    if (monthFilter === 10) {
+      if (roleFilter === "gv") return "/downloads/Import_cong_viec_GV_Thang_10.xlsx";
+      if (roleFilter === "ttcm") return "/downloads/Import_cong_viec_TTCM_Thang_10.xlsx";
+    }
+    if (roleFilter === "cbql") return "/downloads/Import_cong_viec_CBQL.xlsx";
+    if (roleFilter === "gv") return "/downloads/Import_cong_viec_GV.xlsx";
+    if (roleFilter === "ttcm") return "/downloads/Import_cong_viec_TTCM.xlsx";
+    if (roleFilter === "nv") return "/downloads/Import_cong_viec_NV.xlsx";
+    return "/downloads/Import_cong_viec_Tong_hop_tat_ca.xlsx";
   };
 
   return (
@@ -125,7 +142,7 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
               }`}
             >
               <Award className="w-3.5 h-3.5 text-cyan-400" />
-              Tổ Trưởng CM ({JOBS_DATA.ttcm?.length || 14})
+              Tổ Trưởng CM ({JOBS_DATA.ttcm.length})
             </button>
             <button
               onClick={() => setRoleFilter("nv")}
@@ -175,18 +192,20 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
             >
               Tất cả tháng
             </button>
-            {[5, 6, 7, 8, 9, 10].map((m) => (
+            {[5, 6, 7, 8, 9, 10, 11].map((m) => (
               <button
                 key={m}
                 onClick={() => setMonthFilter(monthFilter === m ? null : m)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
                   monthFilter === m
                     ? "bg-indigo-600 text-white shadow-md"
+                    : m === 11
+                    ? "text-cyan-300 hover:text-white bg-cyan-950/50 border border-cyan-500/40"
                     : "text-slate-400 hover:text-white bg-slate-900 border border-slate-800"
                 }`}
               >
                 Tháng {m}/2026
-                {m === 10 && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>}
+                {m === 11 && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>}
               </button>
             ))}
           </div>
@@ -196,26 +215,21 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
         <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="text-slate-400 flex items-center gap-2">
             <span className="font-semibold text-white">Kết quả tìm kiếm:</span>
-            <span>{filteredJobs.length} công việc</span>
+            <span>
+              {filteredJobs.length} công việc
+              {monthFilter ? ` (Tháng ${monthFilter}/2026)` : ""}
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <a
-              href={`/downloads/Import_cong_viec_${
-                roleFilter === "cbql"
-                  ? "CBQL"
-                  : roleFilter === "gv"
-                  ? "GV"
-                  : roleFilter === "ttcm"
-                  ? "TTCM_Thang_10"
-                  : roleFilter === "nv"
-                  ? "NV"
-                  : "Tong_hop_tat_ca"
-              }.xlsx`}
+              href={getDownloadHref()}
               download
               className="px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 font-semibold transition-all flex items-center gap-1.5"
             >
               <Download className="w-3.5 h-3.5" />
-              Tải File Excel Nhóm Hiện Tại
+              {monthFilter === 11
+                ? "Tải Excel Tháng 11 Nhóm Này"
+                : "Tải File Excel Nhóm Hiện Tại"}
             </a>
             <button
               onClick={onOpenSelfEval}
@@ -270,9 +284,15 @@ export const JobExplorer: React.FC<JobExplorerProps> = ({
                   <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-md border border-cyan-500/20">
                     {job.spcvCode}
                   </span>
-                  {(job as any).month && (
-                    <span className="text-xs font-semibold text-indigo-300 bg-indigo-500/10 px-2 py-0.5 rounded-md border border-indigo-500/20">
-                      T.{(job as any).month}/2026
+                  {job.month && (
+                    <span
+                      className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${
+                        job.month === 11
+                          ? "text-cyan-300 bg-cyan-500/15 border-cyan-500/30"
+                          : "text-indigo-300 bg-indigo-500/10 border-indigo-500/20"
+                      }`}
+                    >
+                      T.{job.month}/2026
                     </span>
                   )}
                 </div>

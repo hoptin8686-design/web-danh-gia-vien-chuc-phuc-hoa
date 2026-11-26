@@ -77,11 +77,12 @@ export const RegulationsModal: React.FC<RegulationsModalProps> = ({
           {activeTab === "truong" && (
             <div className="space-y-4">
               <h4 className="text-sm font-bold text-amber-400">
-                Quy Định Tiêu Chí Thi Đua & Thang Điểm Trường THPT Phục Hòa
+                Quy Định Tiêu Chí Thi Đua & Thang Điểm Trường THPT Phục Hòa (QĐ số 48/QĐ-THPT)
               </h4>
               <p>
                 - Thang điểm chuẩn: <strong>100 điểm</strong>/tháng đối với mỗi CBQL, Giáo viên và Nhân
-                viên. Điểm cuối năm là trung bình cộng điểm các tháng.
+                viên. Kỳ đánh giá tháng 11/2026 tổ chức thực hiện từ ngày 01/12 đến 03/12/2026; điểm cuối
+                năm là trung bình cộng điểm các tháng.
               </p>
               <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
                 <span className="font-bold text-white block">Cơ cấu điểm thi đua:</span>
